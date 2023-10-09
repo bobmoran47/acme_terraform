@@ -22,5 +22,5 @@ data "aws_ami" "app_ami" {
    Name = "ACME Company Terraform Presentation"
    }
 }
-  }
-}
+#  }
+# }
