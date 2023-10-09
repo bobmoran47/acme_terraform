@@ -36,4 +36,4 @@ resource "aws_instance" "my-machine" {
   # tags = {
   #   Name = "ACME Company Terraform Presentation"
   # }
- }
+ #}
