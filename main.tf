@@ -16,10 +16,7 @@ data "aws_ami" "app_ami" {
   
  resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
-  instance_type = var.instance_type
-# Creates four identical aws ec2 instances
-  count = 4     
-
+  instance_type = var.instance_typ    
 
   tags = {
    Name = "ACME Company Terraform Presentation"
