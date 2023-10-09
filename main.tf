@@ -19,6 +19,6 @@ data "aws_ami" "app_ami" {
     instance_type = var.instance_type
  
    tags = {
-     Name = "Hello ACME Company"
+     Name = "ACME Company Terraform Presentation"
    }
  }
