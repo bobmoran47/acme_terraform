@@ -24,7 +24,7 @@ resource "aws_instance" "acme" {
   vpc_security_group_ids = [module.acme_sg.security_group_id]
 
   tags = {
-    Name = "ACME Company Terraform Example "
+    Name = "ACME Company Presentation"
   }
 }
 
@@ -39,3 +39,4 @@ module "acme_sg" {
   egress_rules = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
+
