@@ -1,7 +1,7 @@
 data "aws_ami" "app_ami" {
   most_recent = true
 
-filter {
+  filter {
     name   = "name"
     values = [var.ami_filter.name]
   }
@@ -36,7 +36,7 @@ module "acme_autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.5.2"
 
-  name = "blog"
+  name = "acme"
 
   min_size            = var.asg_min
   max_size            = var.asg_max
@@ -47,7 +47,7 @@ module "acme_autoscaling" {
   image_id            = data.aws_ami.app_ami.id
 }
 
-module "acme_alb" {
+module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
@@ -81,7 +81,7 @@ module "acme_alb" {
   }
 }
 
-module "acme_sg" {
+module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.13.0"
 
@@ -92,12 +92,3 @@ module "acme_sg" {
   egress_rules = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
-
-  vpc_id  = data.aws_vpc.default.id
-  name    = "acme"
-  ingress_rules = ["https-443-tcp","http-80-tcp"]
-  ingress_cidr_blocks = ["0.0.0.0/0"]
-  egress_rules = ["all-all"]
-  egress_cidr_blocks = ["0.0.0.0/0"]
-}
-
