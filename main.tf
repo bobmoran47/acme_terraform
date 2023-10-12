@@ -47,7 +47,7 @@ module "acme_autoscaling" {
   image_id            = data.aws_ami.app_ami.id
 }
 
-module "blog_alb" {
+module "acme_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
@@ -81,7 +81,7 @@ module "blog_alb" {
   }
 }
 
-module "blog_sg" {
+module "acme_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.13.0"
 
